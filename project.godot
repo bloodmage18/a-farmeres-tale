@@ -11,8 +11,17 @@ config_version=5
 [application]
 
 config/name="A Farmeres Tale"
+run/main_scene="res://Scenes/Levels/bus_stop.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameState="*res://Scripts/autoload/game_state.gd"
+Story="*res://Scripts/autoload/story.gd"
+Dialogue="*res://Scripts/autoload/dialogue.gd"
+SceneRouter="*res://Scripts/autoload/scene_router.gd"
+HUD="*res://Scripts/autoload/hud.gd"
 
 [display]
 
@@ -23,6 +32,7 @@ window/size/viewport_height=640
 
 area_zone="this is used to transition from one area to another"
 door="room doors"
+Room="Rooms"
 
 [input]
 

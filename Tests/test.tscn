@@ -2,8 +2,8 @@
 
 [ext_resource type="TileSet" uid="uid://6ea4x6vitfbf" path="res://Assets/world.tres" id="1_mokyj"]
 [ext_resource type="PackedScene" uid="uid://bghvu8jxp1dem" path="res://Tests/player.tscn" id="2_axjxb"]
+[ext_resource type="PackedScene" uid="uid://tjdqeoflka44" path="res://Tests/scene_manager.tscn" id="3_j4d8w"]
 [ext_resource type="PackedScene" uid="uid://b0w07jeiwsqtl" path="res://Tests/door.tscn" id="4_5si3w"]
-[ext_resource type="Script" path="res://Tests/RoomandLevelManagement.gd" id="4_cetch"]
 [ext_resource type="PackedScene" uid="uid://dowdhoswxgpmq" path="res://Tests/area_zones.tscn" id="5_bku12"]
 
 [node name="Test" type="Node"]
@@ -25,10 +25,10 @@ tile_set = ExtResource("1_mokyj")
 
 [node name="Scenario" type="Node" parent="."]
 
-[node name="SceneManager" type="Node2D" parent="Scenario"]
-script = ExtResource("4_cetch")
+[node name="SceneManager" parent="Scenario" instance=ExtResource("3_j4d8w")]
 
 [node name="Door" parent="Scenario" instance=ExtResource("4_5si3w")]
+room = null
 
 [node name="AreaZones" parent="Scenario" instance=ExtResource("5_bku12")]
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tjdqeoflka44"]
+
+[ext_resource type="Script" path="res://Tests/RoomandLevelManagement.gd" id="1_87fdv"]
+
+[node name="SceneManager" type="Node2D"]
+script = ExtResource("1_87fdv")

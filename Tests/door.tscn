@@ -14,9 +14,8 @@ size = Vector2(46, 95)
 position = Vector2(178, 558)
 collision_mask = 2
 script = ExtResource("1_ib6m0")
-room = "res://Tests/village.tscn"
 door_data = {
-"description": "tesst",
+"description": "test description",
 "name": "test"
 }
 

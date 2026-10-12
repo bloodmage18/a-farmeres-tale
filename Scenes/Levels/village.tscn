@@ -1,0 +1,136 @@
+[gd_scene load_steps=10 format=4 uid="uid://n3h03i2m4q8f"]
+
+[ext_resource type="Texture2D" uid="uid://fgd43eq6i886" path="res://Assets/chief_palace.png" id="1_res"]
+[ext_resource type="Texture2D" uid="uid://bveracsn4py3n" path="res://Assets/npc_house.png" id="2_res"]
+[ext_resource type="Texture2D" uid="uid://cau2gt5jdcnle" path="res://Assets/resident_flat.png" id="3_res"]
+[ext_resource type="PackedScene" uid="uid://c4xw160fg35oh" path="res://Scenes/Components/block.tscn" id="4_res"]
+[ext_resource type="PackedScene" uid="uid://dw0sfx7w53620" path="res://Scenes/Components/door.tscn" id="5_res"]
+[ext_resource type="TileSet" uid="uid://6ea4x6vitfbf" path="res://Assets/world.tres" id="5_ue5gu"]
+[ext_resource type="PackedScene" uid="uid://opneufpf4jne" path="res://Scenes/Components/npc.tscn" id="6_res"]
+[ext_resource type="Script" path="res://Scripts/world/level.gd" id="7_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="8_res"]
+
+[node name="Village" type="Node2D"]
+script = ExtResource("7_res")
+level_id = "village"
+location_name = "The Village"
+level_width = 4400.0
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="ChiefPalaceArt" type="Sprite2D" parent="Art"]
+visible = false
+texture_filter = 1
+position = Vector2(200, 8)
+texture = ExtResource("1_res")
+centered = false
+
+[node name="AmaHouseArt" type="Sprite2D" parent="Art"]
+texture_filter = 1
+position = Vector2(1142, 15)
+texture = ExtResource("2_res")
+centered = false
+
+[node name="GrandmaHouseArt" type="Sprite2D" parent="Art"]
+visible = false
+texture_filter = 1
+position = Vector2(2500, 8)
+texture = ExtResource("3_res")
+centered = false
+
+[node name="Props" type="TileMapLayer" parent="Art"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAjABMAAgAAAAAAAwB7ABMAAgAAAAAABQAWABMAAgAAAAAABgBlABMAAgAAAAAAAgA=")
+tile_set = ExtResource("5_ue5gu")
+
+[node name="Ground" type="TileMapLayer" parent="Art"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AADs/xMAAQAFAAAAAADt/xMAAQAGAAAAAADu/xMAAQAHAAAAAADv/xMAAQAFAAAAAADw/xMAAQAGAAAAAADx/xMAAQAHAAAAAADy/xMAAQAFAAAAAADz/xMAAQAGAAAAAAD0/xMAAQAHAAAAAAD1/xMAAQAFAAAAAAD2/xMAAQAGAAAAAAD3/xMAAQAHAAAAAAD4/xMAAQAFAAAAAAD5/xMAAQAGAAAAAAD6/xMAAQAHAAAAAAD7/xMAAQAFAAAAAAD8/xMAAQAGAAAAAAD9/xMAAQAHAAAAAAD+/xMAAQAFAAAAAAD//xMAAQAGAAAAAAAAABMAAQAHAAAAAAABABMAAQAFAAAAAAACABMAAQAGAAAAAAADABMAAQAHAAAAAAAEABMAAQAFAAAAAAAFABMAAQAGAAAAAAAGABMAAQAHAAAAAAAHABMAAQAFAAAAAAAIABMAAQAGAAAAAAAJABMAAQAHAAAAAAAKABMAAQAFAAAAAAALABMAAQAGAAAAAAAMABMAAQAHAAAAAAANABMAAQAFAAAAAAAOABMAAQAGAAAAAAAPABMAAQAHAAAAAAAQABMAAQAFAAAAAAARABMAAQAGAAAAAAASABMAAQAHAAAAAAATABMAAQAFAAAAAAAUABMAAQAGAAAAAAAVABMAAQAHAAAAAAAWABMAAQAFAAAAAAAXABMAAQAGAAAAAAAYABMAAQAHAAAAAAAZABMAAQAFAAAAAAAaABMAAQAGAAAAAAAbABMAAQAHAAAAAAAcABMAAQAFAAAAAAAdABMAAQAGAAAAAAAeABMAAQAHAAAAAAAfABMAAQAFAAAAAAAgABMAAQAGAAAAAAAhABMAAQAHAAAAAAAiABMAAQAFAAAAAAAjABMAAQAGAAAAAAAkABMAAQAHAAAAAAAlABMAAQAFAAAAAAAmABMAAQAGAAAAAAAnABMAAQAHAAAAAAAoABMAAQAFAAAAAAApABMAAQAGAAAAAAAqABMAAQAHAAAAAAArABMAAQAFAAAAAAAsABMAAQAGAAAAAAAtABMAAQAHAAAAAAAuABMAAQAFAAAAAAAvABMAAQAGAAAAAAAwABMAAQAHAAAAAAAxABMAAQAFAAAAAAAyABMAAQAGAAAAAAAzABMAAQAHAAAAAAA0ABMAAQAFAAAAAAA1ABMAAQAGAAAAAAA2ABMAAQAHAAAAAAA3ABMAAQAFAAAAAAA4ABMAAQAGAAAAAAA5ABMAAQAHAAAAAAA6ABMAAQAFAAAAAAA7ABMAAQAGAAAAAAA8ABMAAQAHAAAAAAA9ABMAAQAFAAAAAAA+ABMAAQAGAAAAAAA/ABMAAQAHAAAAAABAABMAAQAFAAAAAABBABMAAQAGAAAAAABCABMAAQAHAAAAAABDABMAAQAFAAAAAABEABMAAQAGAAAAAABFABMAAQAHAAAAAABGABMAAQAFAAAAAABHABMAAQAGAAAAAABIABMAAQAHAAAAAABJABMAAQAFAAAAAABKABMAAQAGAAAAAABLABMAAQAHAAAAAABMABMAAQAFAAAAAABNABMAAQAGAAAAAABOABMAAQAHAAAAAABPABMAAQAFAAAAAABQABMAAQAGAAAAAABRABMAAQAHAAAAAABSABMAAQAFAAAAAABTABMAAQAGAAAAAABUABMAAQAHAAAAAABVABMAAQAFAAAAAABWABMAAQAGAAAAAABXABMAAQAHAAAAAABYABMAAQAFAAAAAABZABMAAQAGAAAAAABaABMAAQAHAAAAAABbABMAAQAFAAAAAABcABMAAQAGAAAAAABdABMAAQAHAAAAAABeABMAAQAFAAAAAABfABMAAQAGAAAAAABgABMAAQAHAAAAAABhABMAAQAFAAAAAABiABMAAQAGAAAAAABjABMAAQAHAAAAAABkABMAAQAFAAAAAABlABMAAQAGAAAAAABmABMAAQAHAAAAAABnABMAAQAFAAAAAABoABMAAQAGAAAAAABpABMAAQAHAAAAAABqABMAAQAFAAAAAABrABMAAQAGAAAAAABsABMAAQAHAAAAAABtABMAAQAFAAAAAABuABMAAQAGAAAAAABvABMAAQAHAAAAAABwABMAAQAFAAAAAABxABMAAQAGAAAAAAByABMAAQAHAAAAAABzABMAAQAFAAAAAAB0ABMAAQAGAAAAAAB1ABMAAQAHAAAAAAB2ABMAAQAFAAAAAAB3ABMAAQAGAAAAAAB4ABMAAQAHAAAAAAB5ABMAAQAFAAAAAAB6ABMAAQAGAAAAAAB7ABMAAQAHAAAAAAB8ABMAAQAFAAAAAAB9ABMAAQAGAAAAAAB+ABMAAQAHAAAAAAB/ABMAAQAFAAAAAACAABMAAQAGAAAAAACBABMAAQAHAAAAAACCABMAAQAFAAAAAACDABMAAQAGAAAAAACEABMAAQAHAAAAAACFABMAAQAFAAAAAACGABMAAQAGAAAAAACHABMAAQAHAAAAAACIABMAAQAFAAAAAACJABMAAQAGAAAAAACKABMAAQAHAAAAAACLABMAAQAFAAAAAACMABMAAQAGAAAAAACNABMAAQAFAAAAAACOABMAAQAGAAAAAACPABMAAQAHAAAAAACQABMAAQAFAAAAAACRABMAAQAGAAAAAACSABMAAQAHAAAAAACTABMAAQAFAAAAAACUABMAAQAGAAAAAACVABMAAQAHAAAAAACWABMAAQAFAAAAAACXABMAAQAGAAAAAACYABMAAQAFAAAAAACZABMAAQAGAAAAAACaABMAAQAHAAAAAACbABMAAQAFAAAAAACcABMAAQAGAAAAAACdABMAAQAHAAAAAAA=")
+tile_set = ExtResource("5_ue5gu")
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="ChopBar" parent="Props" instance=ExtResource("4_res")]
+position = Vector2(2144, 610)
+size = Vector2(320, 230)
+color = Color(0.85, 0.5, 0.2, 1)
+label = "Chop Bar"
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="ToBusStop" parent="Objects" instance=ExtResource("5_res")]
+position = Vector2(40, 600)
+target_scene = "res://Scenes/Levels/bus_stop.tscn"
+target_spawn = "from_village"
+auto_enter = true
+box_size = Vector2(40, 200)
+box_color = Color(1, 1, 1, 0.12)
+label = "<- Bus Stop"
+
+[node name="ChiefPalaceDoor" parent="Objects" instance=ExtResource("5_res")]
+position = Vector2(457, 610)
+target_scene = "res://Scenes/Levels/chief_palace.tscn"
+target_spawn = "entrance"
+label = "Chief's Palace"
+
+[node name="AuntieAma" parent="Objects" instance=ExtResource("6_res")]
+position = Vector2(1242, 608)
+npc_id = "villager_ama"
+box_color = Color(0.8, 0.4, 0.5, 1)
+label = "Auntie Ama"
+
+[node name="AmaHouseDoor" parent="Objects" instance=ExtResource("5_res")]
+position = Vector2(1585, 610)
+required_flag = "_locked"
+locked_text = "You knock. Nobody answers."
+label = "Auntie Ama's house"
+
+[node name="ChopBarDoor" parent="Objects" instance=ExtResource("5_res")]
+position = Vector2(2150, 610)
+required_flag = "_locked"
+locked_text = "The chop bar is shuttered for the night. (Bar section - later.)"
+
+[node name="OldKwesi" parent="Objects" instance=ExtResource("6_res")]
+position = Vector2(2380, 600)
+npc_id = "villager_kwesi"
+box_color = Color(0.55, 0.5, 0.45, 1)
+label = "Old Kwesi"
+
+[node name="GrandmaHouseDoor" parent="Objects" instance=ExtResource("5_res")]
+position = Vector2(3111, 609)
+target_scene = "res://Scenes/Levels/grandma_house.tscn"
+target_spawn = "entrance"
+required_flag = "met_chief"
+locked_text = "Grandma's house. It's custom to greet the Chief before anything else - the palace is back west."
+label = "Grandma's house"
+
+[node name="ToFarm" parent="Objects" instance=ExtResource("5_res")]
+position = Vector2(4360, 600)
+target_scene = "res://Scenes/Levels/farm.tscn"
+target_spawn = "from_village"
+auto_enter = true
+required_flag = "got_tasks"
+locked_text = "The road out to Grandma's farm. Nothing to do out there yet."
+box_size = Vector2(40, 200)
+box_color = Color(1, 1, 1, 0.12)
+label = "Farm ->"
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="default" type="Marker2D" parent="Spawns"]
+position = Vector2(150, 540)
+
+[node name="from_bus_stop" type="Marker2D" parent="Spawns"]
+position = Vector2(150, 540)
+
+[node name="from_chief" type="Marker2D" parent="Spawns"]
+position = Vector2(670, 540)
+
+[node name="from_grandma" type="Marker2D" parent="Spawns"]
+position = Vector2(3111, 540)
+
+[node name="from_farm" type="Marker2D" parent="Spawns"]
+position = Vector2(4240, 540)
+
+[node name="Player" parent="." instance=ExtResource("8_res")]
+position = Vector2(200, 540)

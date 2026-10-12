@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw0sfx7w53620"]
+
+[ext_resource type="Script" path="res://Scripts/components/door.gd" id="1_script"]
+
+[node name="Door" type="Area2D"]
+script = ExtResource("1_script")
+prompt = "Enter"
+box_size = Vector2(70, 130)
+box_color = Color(0.36, 0.22, 0.14, 1)

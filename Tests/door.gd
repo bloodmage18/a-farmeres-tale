@@ -4,7 +4,8 @@ signal player_entered_door_area
 signal player_exited_door_area
 signal player_entered_room
 
-@export var room : String = ""
+#@export var room : String = ""
+@export var room : PackedScene
 
 @onready var prompt = $Control/VBoxContainer/Prompt
 @onready var room_name = $Control/VBoxContainer/RoomName
@@ -17,6 +18,11 @@ signal player_entered_room
 	'name': "",
 	'description': ""
 }
+enum entry_to {
+	building,
+	room
+}
+@export var entering = entry_to.building
 
 enum door_state{
 	open,
@@ -36,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				door_state.open:
 					#player is entering the room
 					print("player trying to enter room ")
-					emit_signal("player_entered_room" , room)
+					emit_signal("player_entered_room" , room , entering)
 				door_state.closed:
 					print("the door is locked - access to room denied")
 

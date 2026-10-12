@@ -18,6 +18,9 @@ extends Node2D
 @export var current_room = null
 @export var room_queue_unload = null
 
+var doors
+var area_zone
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_connect_doors_in_scene()
@@ -30,31 +33,33 @@ func _on_area_entered(area):
 	# Preload the room scene as a PackedScene
 	get_tree().change_scene_to_packed(area)
 		
-func _on_door_entered(room):
-	if room is String:
-		get_tree().change_scene_to_file(room)
-	else:
-		
+func _on_door_entered(room , entering):
+	match entering:
+		doors.entry_to.building:
+			get_tree().change_scene_to_packed(room)
+			pass
+		doors.entry_to.room:
+			pass
 		# Preload the room scene as a PackedScene
-		var room_packed_scene = load(room)
-		if room_packed_scene:
-			var room_instance = room_packed_scene.instantiate()
-			room_instance.name = room.get_file().get_basename()
-			if !room_instance.is_in_group("Room"):room_instance.add_to_group("Room")
-			# Unload previous room if needed
-			room_queue_unload = get_tree().get_nodes_in_group("Room")
-			if room_queue_unload:
-				# We defer the unloading to prevent issues while loading
-				room_queue_unload[0].queue_free()
-				room_queue_unload = null
-
-			$Rooms.add_child(room_instance)
-			current_room = room_instance.name
-			# connect doors in new instanced room
-			_connect_doors_in_scene()
-			# refresh labels: new room, and we're no longer in a door
-			_update_room_labels(room_instance)
-			_clear_door_labels()
+		#var room_packed_scene = load(room)
+		#if room_packed_scene:
+			#var room_instance = room_packed_scene.instantiate()
+			#room_instance.name = room.get_file().get_basename()
+			#if !room_instance.is_in_group("Room"):room_instance.add_to_group("Room")
+			## Unload previous room if needed
+			#room_queue_unload = get_tree().get_nodes_in_group("Room")
+			#if room_queue_unload:
+				## We defer the unloading to prevent issues while loading
+				#room_queue_unload[0].queue_free()
+				#room_queue_unload = null
+#
+			#$Rooms.add_child(room_instance)
+			#current_room = room_instance.name
+			## connect doors in new instanced room
+			#_connect_doors_in_scene()
+			## refresh labels: new room, and we're no longer in a door
+			#_update_room_labels(room_instance)
+			#_clear_door_labels()
 
 #---- label update funtions ------------------------------------------------------------------------
 func _update_room_labels(room_node) -> void:
@@ -90,11 +95,13 @@ func _connect_doors_in_scene() -> void:
 	for door in get_tree().get_nodes_in_group("door"):
 		if door.is_connected("player_entered_door_area" ,_on_door_body_entered ):
 			print("door signals already connected - ")
+			doors = door
 			pass
 		else:
 			door.connect("player_entered_door_area" , _on_door_body_entered)
 			door.connect("player_exited_door_area" , _on_door_body_exited)
-			door.connect("player_entered_room" , _on_door_entered)
+			door.connect("player_entered_room" , _on_door_entered )
+			doors = door
 			
 func _connect_area_zone_in_scene() -> void:
 	# connect door signals for new instanced rooms

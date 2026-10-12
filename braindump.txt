@@ -1,0 +1,55 @@
+this is the brain dump for the game
+it strips the outcome and finality o the fame to its bare minimum, we need the game loop , story and assets
+
+now lets begin
+
+the game follows a young man who goes to the village tot take care of his grandmother, who has fallen ill, since she is ill. he has to work, toll the farm and take care of the animals
+
+he also has a cousin who works at a bar to get money for the grandmothers illness too
+
+the game is in too parts, bar serving and management, and farm work
+
+we will focus on the farm
+
+the point is to make enough money for grandmothers treatment or till she gets better
+
+game is in pixel art or 2d handrawn 
+
+bar game loop. server drinks , make enough money, upgrade to buy more drinks and sell it, make enough for grandma
+
+farm game loop is simple, grow crops, heard the cattle and sell them off, and protect the cattle at all cost
+
+grandma gives warning or rules when we visit each day
+
+the farmer goes into the woods to chop firewood, to cook and heat up the place, after cutting a few trees down, on the next visit int he forest, he meets the forest guardian and must battle it out to succeed
+
+it doesn’t try to kill him just battle to the and nail over and over again, we also get elemental powers and main weapon is a gun and machete
+
+Family Tree [ Characters ]
+
+Kojo : Grandson of Agya , is staying over to tend to grandma and her farm
+
+Afia : Cousin of Kojo , works at the chop bar for money for grandma medicin
+
+Agya : Grandmother , sick old lady , currently bedridden
+
+
+
+Locations [ places ]
+
+Grandmas house / huts : where kojo and afia are staying 
+Chop Bar : where afia works
+Farm : where kojo works
+Catlle Ranch : where farm animals stay
+Dark Forest : mysterious forest
+Buss Stop
+
+
+
+Story Map
+
+kojo receives a message from his mother whiles he is on vacation from school and is told that his grandma is ill, he is then tasked with heading tot eh village to tend to his ill grandmother
+
+Kojo arrives at the buss stop in the village a few days later, and sent to the house, where he meets his grandma laying in bed resting and afia is in the kitchen preparing food, after she is done, they sit down and talk , afia informs kojo that grandma is very ill and needs medicine urgently, so as they cant just sell the farm, kojo is to assist by tending to the farm, growing crops and raiding teh cattle and selling them off, she also has some work she is done after they have gathered enough funds for the medicine the will purchase it for grandma, that is to end the game
+
+side story, after acquiring enough money afa takes the money to go and purchase the drugs and disappears with he money , leaving kojo aling with his sick grandma and farmer and cattle with no money to get home

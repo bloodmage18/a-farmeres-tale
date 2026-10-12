@@ -15,13 +15,16 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	# dialogue / scene fades freeze the player in place
+	var locked: bool = GameState.input_locked
+
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if not locked and Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("left", "right")
+	var direction = 0.0 if locked else Input.get_axis("left", "right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5jxqf7scisbq"]
+
+[ext_resource type="Script" path="res://Scripts/components/bed.gd" id="1_script"]
+
+[node name="Bed" type="Area2D"]
+script = ExtResource("1_script")
+prompt = "Sleep"
+box_size = Vector2(160, 50)
+box_color = Color(0.55, 0.6, 0.75, 1)
+label = "Bed"

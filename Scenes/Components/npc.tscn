@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://opneufpf4jne"]
+
+[ext_resource type="Script" path="res://Scripts/components/npc.gd" id="1_script"]
+
+[node name="NPC" type="Area2D"]
+script = ExtResource("1_script")
+prompt = "Talk"
+box_size = Vector2(50, 110)
+box_color = Color(0.75, 0.55, 0.35, 1)

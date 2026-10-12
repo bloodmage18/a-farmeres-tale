@@ -22,8 +22,8 @@ func _ready():
 	
 	area_name.text = get_parent().get_parent().name
 	
-	var loaded_next_scene : String = next_scene.resource_path
-	destination_name.text = load(loaded_next_scene).resource_name
+	var loaded_next_scene = next_scene
+	#destination_name.text = loaded_next_scene.resource_path
 	print(loaded_next_scene , " " , destination_name)
 	
 	pass # Replace with function body.

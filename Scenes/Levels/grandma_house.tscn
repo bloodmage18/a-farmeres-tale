@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxa74lmm0jx2e"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Components/block.tscn" id="1_res"]
+[ext_resource type="PackedScene" uid="uid://opneufpf4jne" path="res://Scenes/Components/npc.tscn" id="2_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Components/door.tscn" id="3_res"]
+[ext_resource type="Script" path="res://Scripts/world/level.gd" id="4_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="5_res"]
+
+[node name="GrandmaHouse" type="Node2D"]
+script = ExtResource("4_res")
+level_id = "grandma_house"
+location_name = "Grandma's House"
+level_width = 1600.0
+interior = true
+sky_color = Color(0.62, 0.5, 0.38, 1)
+ground_color = Color(0.4, 0.27, 0.17, 1)
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Window" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(450, 420)
+size = Vector2(180, 120)
+color = Color(0.3, 0.35, 0.55, 1)
+
+[node name="GrandmaBed" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(760, 600)
+size = Vector2(240, 60)
+color = Color(0.55, 0.6, 0.75, 1)
+
+[node name="Kitchen" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(1180, 600)
+size = Vector2(220, 150)
+color = Color(0.5, 0.45, 0.4, 1)
+label = "Kitchen"
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Grandma" parent="Objects" instance=ExtResource("2_res")]
+position = Vector2(760, 600)
+npc_id = "grandma"
+prompt = "Talk"
+box_size = Vector2(150, 90)
+box_color = Color(0.85, 0.72, 0.6, 1)
+label = "Grandma Agya"
+
+[node name="YoungWoman" parent="Objects" instance=ExtResource("2_res")]
+position = Vector2(960, 600)
+npc_id = "woman"
+prompt = "Talk"
+box_size = Vector2(50, 110)
+box_color = Color(0.45, 0.22, 0.38, 1)
+label = "Young Woman"
+
+[node name="FrontDoor" parent="Objects" instance=ExtResource("3_res")]
+position = Vector2(100, 600)
+target_scene = "res://Scenes/Levels/village.tscn"
+target_spawn = "from_grandma"
+prompt = "Go outside"
+box_size = Vector2(70, 130)
+box_color = Color(0.36, 0.22, 0.14, 1)
+label = "Front door"
+
+[node name="RoomDoor" parent="Objects" instance=ExtResource("3_res")]
+position = Vector2(1500, 600)
+target_scene = "res://Scenes/Levels/kojo_room.tscn"
+target_spawn = "entrance"
+prompt = "Enter"
+box_size = Vector2(70, 130)
+box_color = Color(0.36, 0.22, 0.14, 1)
+label = "Kojo's room"
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="default" type="Marker2D" parent="Spawns"]
+position = Vector2(220, 540)
+
+[node name="entrance" type="Marker2D" parent="Spawns"]
+position = Vector2(220, 540)
+
+[node name="from_room" type="Marker2D" parent="Spawns"]
+position = Vector2(1500, 540)
+
+[node name="Player" parent="." instance=ExtResource("5_res")]
+position = Vector2(200, 540)

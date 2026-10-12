@@ -1,0 +1,91 @@
+[gd_scene load_steps=6 format=3 uid="uid://dn4owmdikcxq4"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Components/block.tscn" id="1_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Components/cow.tscn" id="2_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Components/door.tscn" id="3_res"]
+[ext_resource type="Script" path="res://Scripts/world/level.gd" id="4_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="5_res"]
+
+[node name="Ranch" type="Node2D"]
+script = ExtResource("4_res")
+level_id = "ranch"
+location_name = "The Cattle Ranch"
+level_width = 3200.0
+ground_color = Color(0.38, 0.5, 0.25, 1)
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="PenFence" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(520, 600)
+size = Vector2(520, 70)
+color = Color(0.5, 0.35, 0.2, 0.6)
+label = "Cattle Pen"
+
+[node name="Tree1Trunk" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(2700, 600)
+size = Vector2(30, 160)
+color = Color(0.35, 0.24, 0.15, 1)
+
+[node name="Tree1" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(2700, 450)
+size = Vector2(150, 120)
+color = Color(0.2, 0.42, 0.2, 1)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Cow1" parent="Objects" instance=ExtResource("2_res")]
+position = Vector2(1300, 600)
+pen_spot = Vector2(380, 600)
+prompt = "Herd"
+box_size = Vector2(90, 60)
+box_color = Color(0.85, 0.82, 0.75, 1)
+label = "Cow"
+
+[node name="Cow2" parent="Objects" instance=ExtResource("2_res")]
+position = Vector2(1750, 600)
+pen_spot = Vector2(520, 600)
+prompt = "Herd"
+box_size = Vector2(90, 60)
+box_color = Color(0.85, 0.82, 0.75, 1)
+label = "Cow"
+
+[node name="Cow3" parent="Objects" instance=ExtResource("2_res")]
+position = Vector2(2200, 600)
+pen_spot = Vector2(660, 600)
+prompt = "Herd"
+box_size = Vector2(90, 60)
+box_color = Color(0.85, 0.82, 0.75, 1)
+label = "Cow"
+
+[node name="ToFarm" parent="Objects" instance=ExtResource("3_res")]
+position = Vector2(40, 600)
+target_scene = "res://Scenes/Levels/farm.tscn"
+target_spawn = "from_ranch"
+auto_enter = true
+prompt = "Enter"
+box_size = Vector2(40, 200)
+box_color = Color(1, 1, 1, 0.12)
+label = "<- Farm"
+
+[node name="ToForest" parent="Objects" instance=ExtResource("3_res")]
+position = Vector2(3160, 600)
+auto_enter = true
+required_flag = "_locked"
+locked_text = "The Dark Forest. The trees lean in close, and something tells you: not yet."
+prompt = "Enter"
+box_size = Vector2(40, 200)
+box_color = Color(1, 1, 1, 0.12)
+label = "Dark Forest"
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="default" type="Marker2D" parent="Spawns"]
+position = Vector2(150, 540)
+
+[node name="from_farm" type="Marker2D" parent="Spawns"]
+position = Vector2(150, 540)
+
+[node name="Player" parent="." instance=ExtResource("5_res")]
+position = Vector2(200, 540)

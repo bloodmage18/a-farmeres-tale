@@ -1,0 +1,85 @@
+[gd_scene load_steps=11 format=4 uid="uid://c0mykyk8ywv7w"]
+
+[ext_resource type="Texture2D" uid="uid://boo5f7qf51bm6" path="res://Assets/buss.png" id="2_2x1vh"]
+[ext_resource type="PackedScene" uid="uid://opneufpf4jne" path="res://Scenes/Components/npc.tscn" id="2_res"]
+[ext_resource type="Texture2D" uid="uid://dvhp2lqd50rsr" path="res://Assets/shelter.png" id="3_m6tqr"]
+[ext_resource type="PackedScene" uid="uid://dw0sfx7w53620" path="res://Scenes/Components/door.tscn" id="3_res"]
+[ext_resource type="TileSet" uid="uid://6ea4x6vitfbf" path="res://Assets/world.tres" id="4_6lgvq"]
+[ext_resource type="Script" path="res://Scripts/world/level.gd" id="4_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="5_res"]
+[ext_resource type="Script" path="res://Scripts/components/npc.gd" id="6_l27xo"]
+[ext_resource type="Texture2D" uid="uid://d07tiepglxoev" path="res://Assets/props_1.png" id="7_bjy14"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2r2f0"]
+atlas = ExtResource("7_bjy14")
+region = Rect2(0, 232, 96, 88)
+
+[node name="BusStop" type="Node2D"]
+script = ExtResource("4_res")
+level_id = "bus_stop"
+location_name = "The Bus Stop"
+level_width = 1800.0
+sky_color = Color(0.95, 0.65, 0.45, 1)
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="Bus" type="Sprite2D" parent="Art"]
+texture_filter = 1
+position = Vector2(154, 482)
+scale = Vector2(0.74, 0.74)
+texture = ExtResource("2_2x1vh")
+
+[node name="Sheler" type="Sprite2D" parent="Art"]
+texture_filter = 1
+position = Vector2(703, 448)
+texture = ExtResource("3_m6tqr")
+
+[node name="Props" type="TileMapLayer" parent="Art"]
+tile_map_data = PackedByteArray("AAAnABMAAgAAAAAABAAuABMAAgAAAAAABAA=")
+tile_set = ExtResource("4_6lgvq")
+
+[node name="Ground" type="TileMapLayer" parent="Art"]
+tile_map_data = PackedByteArray("AAAAABMAAQAFAAAAAAABABMAAQAGAAAAAAACABMAAQAHAAAAAAADABMAAQAFAAAAAAAEABMAAQAGAAAAAAAFABMAAQAHAAAAAAAGABMAAQAFAAAAAAAHABMAAQAGAAAAAAAIABMAAQAHAAAAAAAJABMAAQAFAAAAAAAKABMAAQAGAAAAAAALABMAAQAHAAAAAAAMABMAAQAFAAAAAAANABMAAQAGAAAAAAAOABMAAQAHAAAAAAAPABMAAQAFAAAAAAAQABMAAQAGAAAAAAARABMAAQAHAAAAAAASABMAAQAFAAAAAAATABMAAQAGAAAAAAAUABMAAQAHAAAAAAAVABMAAQAFAAAAAAAWABMAAQAGAAAAAAAXABMAAQAHAAAAAAAYABMAAQAFAAAAAAAZABMAAQAGAAAAAAAaABMAAQAHAAAAAAAbABMAAQAFAAAAAAAcABMAAQAGAAAAAAAdABMAAQAHAAAAAAAeABMAAQAFAAAAAAAfABMAAQAGAAAAAAAgABMAAQAHAAAAAAAhABMAAQAFAAAAAAAiABMAAQAGAAAAAAAjABMAAQAHAAAAAAAkABMAAQAFAAAAAAAlABMAAQAGAAAAAAAmABMAAQAFAAAAAAAnABMAAQAGAAAAAAAoABMAAQAHAAAAAAApABMAAQAFAAAAAAAqABMAAQAGAAAAAAArABMAAQAHAAAAAAAsABMAAQAFAAAAAAAtABMAAQAGAAAAAAAuABMAAQAHAAAAAAAvABMAAQAFAAAAAAAwABMAAQAGAAAAAAAxABMAAQAHAAAAAAAyABMAAQAFAAAAAAAzABMAAQAGAAAAAAA0ABMAAQAHAAAAAAA1ABMAAQAFAAAAAAA2ABMAAQAGAAAAAAA3ABMAAQAFAAAAAAA4ABMAAQAGAAAAAAA5ABMAAQAHAAAAAAA6ABMAAQAFAAAAAAA7ABMAAQAGAAAAAAA8ABMAAQAHAAAAAAA9ABMAAQAFAAAAAAA+ABMAAQAGAAAAAAA/ABMAAQAHAAAAAAD9/xMAAQAFAAAAAAD+/xMAAQAGAAAAAAD//xMAAQAHAAAAAAD6/xMAAQAFAAAAAAD7/xMAAQAGAAAAAAD8/xMAAQAHAAAAAAA=")
+tile_set = ExtResource("4_6lgvq")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="BusDriver" parent="Objects" instance=ExtResource("2_res")]
+position = Vector2(460, 600)
+npc_id = "bus_driver"
+label = "Driver"
+
+[node name="Sign" type="Area2D" parent="Objects"]
+position = Vector2(1000, 600)
+script = ExtResource("6_l27xo")
+npc_id = "bus_sign"
+prompt = "Read"
+box_size = Vector2(50, 110)
+box_color = Color(0.6, 0.6, 0.6, 0)
+label = "Sign"
+
+[node name="Sign" type="Sprite2D" parent="Objects/Sign"]
+texture_filter = 1
+position = Vector2(-25, -35)
+texture = SubResource("AtlasTexture_2r2f0")
+offset = Vector2(21.93, 0)
+
+[node name="ToVillage" parent="Objects" instance=ExtResource("3_res")]
+position = Vector2(1760, 600)
+target_scene = "res://Scenes/Levels/village.tscn"
+target_spawn = "from_bus_stop"
+auto_enter = true
+box_size = Vector2(40, 200)
+box_color = Color(1, 1, 1, 0.12)
+label = "Village ->"
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="default" type="Marker2D" parent="Spawns"]
+position = Vector2(600, 540)
+
+[node name="from_village" type="Marker2D" parent="Spawns"]
+position = Vector2(1620, 540)
+
+[node name="Player" parent="." instance=ExtResource("5_res")]
+position = Vector2(200, 540)

@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://du2wfob7sbbjq"]
+
+[ext_resource type="PackedScene" path="res://Scenes/Components/block.tscn" id="1_res"]
+[ext_resource type="PackedScene" uid="uid://b5jxqf7scisbq" path="res://Scenes/Components/bed.tscn" id="2_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Components/door.tscn" id="3_res"]
+[ext_resource type="Script" path="res://Scripts/world/level.gd" id="4_res"]
+[ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="5_res"]
+
+[node name="KojoRoom" type="Node2D"]
+script = ExtResource("4_res")
+level_id = "kojo_room"
+location_name = "Kojo's Room"
+level_width = 1100.0
+interior = true
+sky_color = Color(0.62, 0.5, 0.38, 1)
+ground_color = Color(0.4, 0.27, 0.17, 1)
+
+[node name="Art" type="Node2D" parent="."]
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Window" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(500, 430)
+size = Vector2(140, 110)
+color = Color(0.3, 0.35, 0.55, 1)
+
+[node name="Chest" parent="Props" instance=ExtResource("1_res")]
+position = Vector2(950, 600)
+size = Vector2(110, 70)
+color = Color(0.45, 0.3, 0.18, 1)
+label = "Bag"
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Bed" parent="Objects" instance=ExtResource("2_res")]
+position = Vector2(720, 600)
+prompt = "Sleep"
+box_size = Vector2(160, 50)
+box_color = Color(0.55, 0.6, 0.75, 1)
+label = "Bed"
+
+[node name="Hallway" parent="Objects" instance=ExtResource("3_res")]
+position = Vector2(100, 600)
+target_scene = "res://Scenes/Levels/grandma_house.tscn"
+target_spawn = "from_room"
+prompt = "Enter"
+box_size = Vector2(70, 130)
+box_color = Color(0.36, 0.22, 0.14, 1)
+label = "Hallway"
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="default" type="Marker2D" parent="Spawns"]
+position = Vector2(220, 540)
+
+[node name="entrance" type="Marker2D" parent="Spawns"]
+position = Vector2(220, 540)
+
+[node name="bed" type="Marker2D" parent="Spawns"]
+position = Vector2(600, 540)
+
+[node name="Player" parent="." instance=ExtResource("5_res")]
+position = Vector2(200, 540)

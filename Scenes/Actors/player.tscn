@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_player"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kojo"]
+radius = 25.0
+height = 100.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kojo"]
+radius = 25.0
+height = 100.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_layer = 3
+script = ExtResource("1_player")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.25, 0.45, 0.85, 1)
+mesh = SubResource("CapsuleMesh_kojo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kojo")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -100)
+zoom = Vector2(1.2, 1.2)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
