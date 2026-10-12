@@ -43,6 +43,12 @@ use_texture_padding = false
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 7:0/0 = 0
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+1:7/0 = 0
+0:7/0 = 0
+1:5/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_njabd"]
 scenes/1/scene = ExtResource("2_f8cy6")

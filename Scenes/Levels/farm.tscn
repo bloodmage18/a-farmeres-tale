@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://cdd5gw1ed8uuc"]
 
-[ext_resource type="PackedScene" path="res://Scenes/Components/block.tscn" id="1_res"]
+[ext_resource type="PackedScene" uid="uid://c4xw160fg35oh" path="res://Scenes/Components/block.tscn" id="1_res"]
 [ext_resource type="PackedScene" path="res://Scenes/Components/crop_plot.tscn" id="2_res"]
-[ext_resource type="PackedScene" path="res://Scenes/Components/door.tscn" id="3_res"]
+[ext_resource type="PackedScene" uid="uid://dw0sfx7w53620" path="res://Scenes/Components/door.tscn" id="3_res"]
 [ext_resource type="Script" path="res://Scripts/world/level.gd" id="4_res"]
 [ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="5_res"]
 
@@ -10,25 +10,12 @@
 script = ExtResource("4_res")
 level_id = "farm"
 location_name = "Grandma's Farm"
-level_width = 3000
+level_width = 3000.0
 ground_color = Color(0.4, 0.3, 0.18, 1)
 
 [node name="Art" type="Node2D" parent="."]
 
 [node name="Props" type="Node2D" parent="."]
-
-[node name="Objects" type="Node2D" parent="."]
-
-[node name="Spawns" type="Node2D" parent="."]
-
-[node name="default" type="Marker2D" parent="Spawns"]
-position = Vector2(150, 540)
-
-[node name="from_village" type="Marker2D" parent="Spawns"]
-position = Vector2(150, 540)
-
-[node name="from_ranch" type="Marker2D" parent="Spawns"]
-position = Vector2(2840, 540)
 
 [node name="FarmHut" parent="Props" instance=ExtResource("1_res")]
 position = Vector2(2300, 600)
@@ -46,51 +33,77 @@ label = "Scarecrow"
 position = Vector2(400, 600)
 size = Vector2(30, 160)
 color = Color(0.35, 0.24, 0.15, 1)
-label = ""
 
 [node name="Tree1" parent="Props" instance=ExtResource("1_res")]
 position = Vector2(400, 450)
 size = Vector2(150, 120)
 color = Color(0.2, 0.42, 0.2, 1)
-label = ""
+
+[node name="Objects" type="Node2D" parent="."]
 
 [node name="Plot1" parent="Objects" instance=ExtResource("2_res")]
 position = Vector2(750, 600)
+prompt = "Tend crops"
+box_size = Vector2(120, 30)
+box_color = Color(0.45, 0.3, 0.18, 1)
 label = "Crops"
 
 [node name="Plot2" parent="Objects" instance=ExtResource("2_res")]
 position = Vector2(1000, 600)
+prompt = "Tend crops"
+box_size = Vector2(120, 30)
+box_color = Color(0.45, 0.3, 0.18, 1)
 label = "Crops"
 
 [node name="Plot3" parent="Objects" instance=ExtResource("2_res")]
 position = Vector2(1250, 600)
+prompt = "Tend crops"
+box_size = Vector2(120, 30)
+box_color = Color(0.45, 0.3, 0.18, 1)
 label = "Crops"
 
 [node name="Plot4" parent="Objects" instance=ExtResource("2_res")]
 position = Vector2(1500, 600)
+prompt = "Tend crops"
+box_size = Vector2(120, 30)
+box_color = Color(0.45, 0.3, 0.18, 1)
 label = "Crops"
 
 [node name="Plot5" parent="Objects" instance=ExtResource("2_res")]
 position = Vector2(1750, 600)
+prompt = "Tend crops"
+box_size = Vector2(120, 30)
+box_color = Color(0.45, 0.3, 0.18, 1)
 label = "Crops"
 
 [node name="ToVillage" parent="Objects" instance=ExtResource("3_res")]
 position = Vector2(40, 600)
 target_scene = "res://Scenes/Levels/village.tscn"
 target_spawn = "from_farm"
-label = "<- Village"
+auto_enter = true
 box_size = Vector2(40, 200)
 box_color = Color(1, 1, 1, 0.12)
-auto_enter = true
+label = "<- Village"
 
 [node name="ToRanch" parent="Objects" instance=ExtResource("3_res")]
 position = Vector2(2960, 600)
 target_scene = "res://Scenes/Levels/ranch.tscn"
 target_spawn = "from_farm"
-label = "Ranch ->"
+auto_enter = true
 box_size = Vector2(40, 200)
 box_color = Color(1, 1, 1, 0.12)
-auto_enter = true
+label = "Ranch ->"
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[node name="default" type="Marker2D" parent="Spawns"]
+position = Vector2(150, 540)
+
+[node name="from_village" type="Marker2D" parent="Spawns"]
+position = Vector2(150, 540)
+
+[node name="from_ranch" type="Marker2D" parent="Spawns"]
+position = Vector2(2840, 540)
 
 [node name="Player" parent="." instance=ExtResource("5_res")]
 position = Vector2(200, 540)

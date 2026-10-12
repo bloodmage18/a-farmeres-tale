@@ -1,26 +1,67 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=10 format=4 uid="uid://mqdc17ardx3c"]
 
-[ext_resource type="Texture2D" path="res://Assets/chief_palace_meetinghall_bg.png" id="1_res"]
-[ext_resource type="PackedScene" path="res://Scenes/Components/block.tscn" id="2_res"]
-[ext_resource type="PackedScene" path="res://Scenes/Components/npc.tscn" id="3_res"]
-[ext_resource type="PackedScene" path="res://Scenes/Components/door.tscn" id="4_res"]
+[ext_resource type="Texture2D" uid="uid://20bhpv8ofoif" path="res://Assets/chief_palace_meetinghall_bg.png" id="1_res"]
+[ext_resource type="PackedScene" uid="uid://c4xw160fg35oh" path="res://Scenes/Components/block.tscn" id="2_res"]
+[ext_resource type="Texture2D" uid="uid://c3u7h58ij8om4" path="res://Assets/Sprite-0001.png" id="3_5a3je"]
+[ext_resource type="PackedScene" uid="uid://opneufpf4jne" path="res://Scenes/Components/npc.tscn" id="3_res"]
+[ext_resource type="TileSet" uid="uid://6ea4x6vitfbf" path="res://Assets/world.tres" id="4_g7xls"]
 [ext_resource type="Script" path="res://Scripts/world/level.gd" id="5_res"]
 [ext_resource type="PackedScene" path="res://Scenes/Actors/player.tscn" id="6_res"]
+[ext_resource type="Script" path="res://Scripts/components/door.gd" id="6_vf2sy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xacqe"]
+atlas = ExtResource("3_5a3je")
+region = Rect2(0, 160, 48, 96)
 
 [node name="ChiefPalace" type="Node2D"]
 script = ExtResource("5_res")
 level_id = "chief_palace"
 location_name = "Chief's Palace - Meeting Hall"
-level_width = 1280
 interior = true
-sky_color = Color(0.7, 0.78, 0.95, 1)
-ground_color = Color(0.45, 0.3, 0.25, 1)
+sky_color = Color(0.54902, 0.74902, 0.94902, 0)
 
 [node name="Art" type="Node2D" parent="."]
 
+[node name="MeetingHallArt" type="Sprite2D" parent="Art"]
+texture_filter = 1
+texture = ExtResource("1_res")
+centered = false
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Art"]
+tile_map_data = PackedByteArray("AAAAABMAAQAAAAAAAAABABMAAQAAAAAAAAACABMAAQAAAAAAAAADABMAAQAAAAAAAAAEABMAAQAAAAAAAAAFABMAAQAAAAAAAAAGABMAAQAAAAAAAAAHABMAAQAAAAAAAAAIABMAAQAAAAAAAAAJABMAAQAAAAAAAAAKABMAAQAAAAAAAAALABMAAQAAAAAAAAAMABMAAQAAAAAAAAANABMAAQAAAAAAAAAOABMAAQAAAAAAAAAPABMAAQAAAAAAAAAQABMAAQAAAAAAAAARABMAAQAAAAAAAAASABMAAQAAAAAAAAATABMAAQAAAAAAAAAUABMAAQAAAAAAAAAVABMAAQAAAAAAAAAWABMAAQAAAAAAAAAXABMAAQAAAAAAAAAYABMAAQAAAAAAAAAZABMAAQAAAAAAAAAaABMAAQAAAAAAAAAbABMAAQAAAAAAAAAcABMAAQAAAAAAAAAdABMAAQAAAAAAAAAeABMAAQAAAAAAAAAfABMAAQAAAAAAAAAgABMAAQAAAAAAAAAhABMAAQAAAAAAAAAiABMAAQAAAAAAAAAjABMAAQAAAAAAAAAkABMAAQAAAAAAAAAlABMAAQAAAAAAAAAmABMAAQAAAAAAAAAnABMAAQACAAEAADAAABQAAQAFAAAAAAABABQAAQAFAAAAAAACABQAAQAFAAAAAAADABQAAQAFAAAAAAAEABQAAQAFAAAAAAAFABQAAQAFAAAAAAAGABQAAQAFAAAAAAAHABQAAQAFAAAAAAAIABQAAQAFAAAAAAAJABQAAQAFAAAAAAAKABQAAQAFAAAAAAALABQAAQAFAAAAAAAMABQAAQAFAAAAAAANABQAAQAFAAAAAAAOABQAAQAFAAAAAAAPABQAAQAFAAAAAAAQABQAAQAFAAAAAAARABQAAQAFAAAAAAASABQAAQAFAAAAAAATABQAAQAFAAAAAAAUABQAAQAFAAAAAAAVABQAAQAFAAAAAAAWABQAAQAFAAAAAAAXABQAAQAFAAAAAAAYABQAAQAFAAAAAAAZABQAAQAFAAAAAAAaABQAAQAFAAAAAAAbABQAAQAFAAAAAAAcABQAAQAFAAAAAAAdABQAAQAFAAAAAAAeABQAAQAFAAAAAAAfABQAAQAFAAAAAAAgABQAAQAFAAAAAAAhABQAAQAFAAAAAAAiABQAAQAFAAAAAAAjABQAAQAFAAAAAAAkABQAAQAFAAAAAAAlABQAAQAFAAAAAAAmABQAAQAFAAAAAAAnABQAAQAFAAAAAAAAAA4AAQACAAEAAAAAAA0AAQACAAEAAAAAAAwAAQACAAEAAAAAAAsAAQACAAEAAAAAAAoAAQACAAEAAAAAAAkAAQACAAEAAAAAAAgAAQACAAEAAAAAAAcAAQACAAEAAAAAAAYAAQACAAEAAAAAAAUAAQACAAEAAAAAAAQAAQACAAEAAAAAAAMAAQACAAEAAAAAAAIAAQACAAEAAAAAAAEAAQACAAEAAAAAAAAAAQACAAEAAAABAAAAAQACAAEAAFACAAAAAQACAAEAAFADAAAAAQACAAEAAFAEAAAAAQACAAEAAFAFAAAAAQACAAEAAFAGAAAAAQACAAEAAFAHAAAAAQACAAEAAFAIAAAAAQACAAEAAFAJAAAAAQACAAEAAFAKAAAAAQACAAEAAFALAAAAAQACAAEAAFAMAAAAAQACAAEAAFANAAAAAQACAAEAAFAOAAAAAQACAAEAAFAiAAAAAQACAAEAAFAjAAAAAQACAAEAAFAkAAAAAQACAAEAAFAlAAAAAQACAAEAAFAmAAAAAQACAAEAAFAnAAAAAQACAAEAAFAhAAAAAQACAAEAAFAgAAAAAQACAAEAAFAfAAAAAQACAAEAAFAeAAAAAQACAAEAAFAdAAAAAQACAAEAAFAcAAAAAQACAAEAAFAbAAAAAQACAAEAAFAaAAAAAQACAAEAAFAPAAAAAQACAAEAAFAQAAAAAQACAAEAAFARAAAAAQACAAEAAFASAAAAAQACAAEAAFATAAAAAQACAAEAAFAUAAAAAQACAAEAAFAVAAAAAQACAAEAAFAWAAAAAQACAAEAAFAXAAAAAQACAAEAAFAYAAAAAQACAAEAAFAZAAAAAQACAAEAAFAnAAEAAQACAAEAADAnAAIAAQACAAEAADAnAAMAAQACAAEAADAnAAQAAQACAAEAADAnAAUAAQACAAEAADAnAAYAAQACAAEAADAnAAcAAQACAAEAADAnAAgAAQACAAEAADAnAAkAAQACAAEAADAnAAoAAQACAAEAADAnAAsAAQACAAEAADAnAAwAAQACAAEAADAnAA0AAQACAAEAADAnAA4AAQACAAEAADAnAA8AAQACAAEAADAnABAAAQACAAEAADAnABIAAQACAAEAADAnABEAAQACAAEAADAAAA8AAQACAAEAAAAAABAAAQACAAEAAAAAABEAAQACAAEAAAAAABIAAQACAAEAAAA=")
+tile_set = ExtResource("4_g7xls")
+
 [node name="Props" type="Node2D" parent="."]
 
+[node name="Throne" parent="Props" instance=ExtResource("2_res")]
+position = Vector2(980, 600)
+size = Vector2(140, 180)
+color = Color(0.6, 0.45, 0.15, 1)
+label = "Stool of Office"
+
 [node name="Objects" type="Node2D" parent="."]
+
+[node name="Chief" parent="Objects" instance=ExtResource("3_res")]
+position = Vector2(880, 600)
+npc_id = "chief"
+box_color = Color(0.45, 0.25, 0.55, 1)
+label = "Nana Chief"
+
+[node name="Exit" type="Area2D" parent="Objects"]
+position = Vector2(57, 606)
+script = ExtResource("6_vf2sy")
+target_scene = "res://Scenes/Levels/village.tscn"
+target_spawn = "from_chief"
+prompt = "Leave"
+box_size = Vector2(70, 130)
+box_color = Color(0.36, 0.22, 0.14, 1)
+label = "Exit"
+
+[node name="Door" type="Sprite2D" parent="Objects/Exit"]
+texture_filter = 1
+position = Vector2(0, -65)
+scale = Vector2(1.5, 1.5)
+texture = SubResource("AtlasTexture_xacqe")
 
 [node name="Spawns" type="Node2D" parent="."]
 
@@ -29,31 +70,6 @@ position = Vector2(220, 540)
 
 [node name="entrance" type="Marker2D" parent="Spawns"]
 position = Vector2(220, 540)
-
-[node name="MeetingHallArt" type="Sprite2D" parent="Art"]
-texture_filter = 1
-position = Vector2(0, 0)
-centered = false
-texture = ExtResource("1_res")
-
-[node name="Throne" parent="Props" instance=ExtResource("2_res")]
-position = Vector2(980, 600)
-size = Vector2(140, 180)
-color = Color(0.6, 0.45, 0.15, 1)
-label = "Stool of Office"
-
-[node name="Chief" parent="Objects" instance=ExtResource("3_res")]
-position = Vector2(880, 600)
-npc_id = "chief"
-label = "Nana Chief"
-box_color = Color(0.45, 0.25, 0.55, 1)
-
-[node name="Exit" parent="Objects" instance=ExtResource("4_res")]
-position = Vector2(100, 600)
-target_scene = "res://Scenes/Levels/village.tscn"
-target_spawn = "from_chief"
-prompt = "Leave"
-label = "Exit"
 
 [node name="Player" parent="." instance=ExtResource("6_res")]
 position = Vector2(200, 540)
