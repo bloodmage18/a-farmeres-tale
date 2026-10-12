@@ -1,0 +1,50 @@
+[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://6ea4x6vitfbf"]
+
+[ext_resource type="Texture2D" uid="uid://c3u7h58ij8om4" path="res://Assets/Sprite-0001.png" id="1_3yyy5"]
+[ext_resource type="PackedScene" uid="uid://bl2q7q6sfph4p" path="res://Tests/np_chouse.tscn" id="2_f8cy6"]
+[ext_resource type="PackedScene" uid="uid://cybgf5nbic4qk" path="res://Tests/grandmas_flat.tscn" id="3_0qgi5"]
+[ext_resource type="PackedScene" uid="uid://dbbbio81wndbl" path="res://Tests/trees/chief_tree.tscn" id="4_psxdp"]
+[ext_resource type="PackedScene" uid="uid://c6dc2fln4vvvb" path="res://Tests/trees/dead.tscn" id="5_87mt8"]
+[ext_resource type="PackedScene" uid="uid://cm812mme21mmj" path="res://Tests/trees/random.tscn" id="6_4b1rl"]
+[ext_resource type="PackedScene" uid="uid://dqlfhkeghumco" path="res://Tests/chief_palace.tscn" id="7_ba3qt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2aq1"]
+resource_name = "<null>"
+texture = ExtResource("1_3yyy5")
+texture_region_size = Vector2i(32, 32)
+use_texture_padding = false
+10:14/0 = 0
+11:14/0 = 0
+12:14/0 = 0
+13:14/0 = 0
+14:14/0 = 0
+15:14/0 = 0
+10:15/0 = 0
+11:15/0 = 0
+12:15/0 = 0
+13:15/0 = 0
+14:15/0 = 0
+15:15/0 = 0
+7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+6:7/0 = 0
+6:7/0/z_index = 1
+5:7/0 = 0
+5:7/0/z_index = 1
+0:0/0 = 0
+1:0/0 = 0
+2:1/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_njabd"]
+scenes/1/scene = ExtResource("2_f8cy6")
+scenes/2/scene = ExtResource("3_0qgi5")
+scenes/3/scene = ExtResource("4_psxdp")
+scenes/4/scene = ExtResource("5_87mt8")
+scenes/5/scene = ExtResource("6_4b1rl")
+scenes/6/scene = ExtResource("7_ba3qt")
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_r2aq1")
+sources/2 = SubResource("TileSetScenesCollectionSource_njabd")

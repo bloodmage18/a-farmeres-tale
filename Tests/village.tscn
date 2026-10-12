@@ -1,3 +1,59 @@
-[gd_scene format=3 uid="uid://dcd5icwuowpvj"]
+[gd_scene load_steps=5 format=4 uid="uid://dcd5icwuowpvj"]
+
+[ext_resource type="TileSet" uid="uid://6ea4x6vitfbf" path="res://Assets/world.tres" id="1_aghci"]
+[ext_resource type="Script" path="res://Tests/RoomandLevelManagement.gd" id="1_rw4al"]
+[ext_resource type="PackedScene" uid="uid://b0w07jeiwsqtl" path="res://Tests/door.tscn" id="2_70jrp"]
+[ext_resource type="PackedScene" uid="uid://bghvu8jxp1dem" path="res://Tests/player.tscn" id="3_cmskk"]
 
 [node name="Village" type="Node"]
+
+[node name="SceneManager" type="Node2D" parent="."]
+script = ExtResource("1_rw4al")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Node2D"]
+tile_map_data = PackedByteArray("AAAOABMAAgAAAAAABgAaABIAAgAAAAAAAwA=")
+tile_set = ExtResource("1_aghci")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Node2D"]
+position = Vector2(-1, 0)
+tile_map_data = PackedByteArray("AAAAABMAAQAHAAcAAAABABMAAQAHAAcAAAACABMAAQAHAAcAAAADABMAAQAHAAcAAAAEABMAAQAHAAcAAAAFABMAAQAHAAcAAAAGABMAAQAHAAcAAAAHABMAAQAHAAcAAAAIABMAAQAHAAcAAAAJABMAAQAHAAcAAAAKABMAAQAHAAcAAAALABMAAQAHAAcAAAAPABMAAQAHAAcAAAAQABMAAQAHAAcAAAARABMAAQAHAAcAAAASABMAAQAHAAcAAAATABMAAQAHAAcAAAAUABMAAQAHAAcAAAAVABMAAQAHAAcAAAAWABMAAQAHAAcAAAAXABMAAQAHAAcAAAAYABMAAQAHAAcAAAAZABMAAQAHAAcAAAAaABMAAQAHAAcAAAAbABMAAQAHAAcAAAAcABMAAQAHAAcAAAAdABMAAQAHAAcAAAAeABMAAQAHAAcAAAAfABMAAQAHAAcAAAAgABMAAQAHAAcAAAAhABMAAQAHAAcAAAAiABMAAQAHAAcAAAAjABMAAQAHAAcAAAAkABMAAQAHAAcAAAAlABMAAQAHAAcAAAAmABMAAQAHAAcAAAAnABMAAQAHAAcAAAAoABMAAQAHAAcAAAApABMAAQAHAAcAAAAqABMAAQAHAAcAAAArABMAAQAHAAcAAAAsABMAAQAHAAcAAAAtABMAAQAHAAcAAAAuABMAAQAHAAcAAAAvABMAAQAHAAcAAAAwABMAAQAHAAcAAAD//xMAAQAHAAcAAAD+/xMAAQAHAAcAAAD9/xMAAQAHAAcAAAD8/xMAAQAHAAcAAAD7/xMAAQAHAAcAAAD6/xMAAQAHAAcAAAD5/xMAAQAHAAcAAAD4/xMAAQAHAAcAAAD3/xMAAQAHAAcAAAD2/xMAAQAHAAcAAAD1/xMAAQAHAAcAAAD1/xIAAQAFAAcAAAD2/xIAAQAGAAcAAAD3/xIAAQAFAAcAAAD4/xIAAQAGAAcAAAD5/xIAAQAFAAcAAAD6/xIAAQAGAAcAAAD7/xIAAQAFAAcAAAD8/xIAAQAGAAcAAAD9/xIAAQAFAAcAAAD+/xIAAQAGAAcAAAD//xIAAQAFAAcAAAAAABIAAQAGAAcAAAABABIAAQAFAAcAAAACABIAAQAGAAcAAAADABIAAQAFAAcAAAAEABIAAQAGAAcAAAAFABIAAQAFAAcAAAAGABIAAQAGAAcAAAAHABIAAQAFAAcAAAAIABIAAQAGAAcAAAAJABIAAQAFAAcAAAAKABIAAQAGAAcAAAALABIAAQAFAAcAAAAQABIAAQAGAAcAAAARABIAAQAFAAcAAAASABIAAQAGAAcAAAATABIAAQAFAAcAAAAUABIAAQAGAAcAAAAVABIAAQAFAAcAAAAWABIAAQAGAAcAAAAXABIAAQAFAAcAAAAYABIAAQAGAAcAAAAZABIAAQAFAAcAAAAaABIAAQAGAAcAAAAbABIAAQAFAAcAAAAcABIAAQAGAAcAAAAdABIAAQAFAAcAAAAeABIAAQAGAAcAAAAfABIAAQAFAAcAAAAgABIAAQAGAAcAAAAhABIAAQAFAAcAAAAiABIAAQAGAAcAAAAjABIAAQAFAAcAAAAkABIAAQAGAAcAAAAlABIAAQAFAAcAAAAmABIAAQAGAAcAAAAnABIAAQAFAAcAAAAoABIAAQAGAAcAAAApABIAAQAFAAcAAAAqABIAAQAGAAcAAAArABIAAQAFAAcAAAAsABIAAQAGAAcAAAAtABIAAQAFAAcAAAAuABIAAQAGAAcAAAAvABIAAQAFAAcAAAAwABIAAQAGAAcAAAAMABMAAQAHAAcAAAANABMAAQAHAAcAAAAOABMAAQAHAAcAAAAMABIAAQAGAAcAAAANABIAAQAFAAcAAAAOABIAAQAGAAcAAAA=")
+tile_set = ExtResource("1_aghci")
+
+[node name="Protoype" type="Node2D" parent="."]
+
+[node name="Door" parent="Protoype" instance=ExtResource("2_70jrp")]
+door_data = {
+"description": "go to grandmahs house",
+"name": "grandmas place"
+}
+state = 1
+
+[node name="Door2" parent="Protoype" instance=ExtResource("2_70jrp")]
+position = Vector2(502, 558)
+room = "res://Tests/Scenarios/ChiefPalace/chief_palace.tscn"
+door_data = {
+"description": "village chied palace",
+"name": "chief residence"
+}
+
+[node name="Door3" parent="Protoype" instance=ExtResource("2_70jrp")]
+position = Vector2(804, 556)
+door_data = {
+"description": "the dark forest",
+"name": "dark forest"
+}
+state = 1
+
+[node name="Door4" parent="Protoype" instance=ExtResource("2_70jrp")]
+position = Vector2(1120, 555)
+door_data = {
+"description": "bar",
+"name": "bar"
+}
+state = 1
+
+[node name="Player" type="Node" parent="."]
+
+[node name="Player" parent="Player" instance=ExtResource("3_cmskk")]

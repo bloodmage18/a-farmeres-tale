@@ -1,62 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cr8dngye073mh"]
+[gd_scene load_steps=6 format=4 uid="uid://cr8dngye073mh"]
 
-[ext_resource type="Script" path="res://Tests/door.gd" id="1_rqawn"]
-[ext_resource type="Texture2D" uid="uid://c3u7h58ij8om4" path="res://Assets/Sprite-0001.png" id="1_ypi2y"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="2_cfcjg"]
+[ext_resource type="TileSet" uid="uid://6ea4x6vitfbf" path="res://Assets/world.tres" id="1_mokyj"]
+[ext_resource type="PackedScene" uid="uid://bghvu8jxp1dem" path="res://Tests/player.tscn" id="2_axjxb"]
+[ext_resource type="PackedScene" uid="uid://b0w07jeiwsqtl" path="res://Tests/door.tscn" id="4_5si3w"]
 [ext_resource type="Script" path="res://Tests/RoomandLevelManagement.gd" id="4_cetch"]
-[ext_resource type="Script" path="res://Tests/area_zones.gd" id="5_g4gcs"]
-[ext_resource type="PackedScene" uid="uid://dcd5icwuowpvj" path="res://Tests/village.tscn" id="6_t1qbb"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r2aq1"]
-resource_name = "<null>"
-texture = ExtResource("1_ypi2y")
-texture_region_size = Vector2i(32, 32)
-use_texture_padding = false
-10:14/0 = 0
-11:14/0 = 0
-12:14/0 = 0
-13:14/0 = 0
-14:14/0 = 0
-15:14/0 = 0
-10:15/0 = 0
-11:15/0 = 0
-12:15/0 = 0
-13:15/0 = 0
-14:15/0 = 0
-15:15/0 = 0
-7:7/0 = 0
-7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
-6:7/0 = 0
-6:7/0/z_index = 1
-5:7/0 = 0
-5:7/0/z_index = 1
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_jp0ik"]
-tile_size = Vector2i(32, 32)
-physics_layer_0/collision_layer = 1
-sources/1 = SubResource("TileSetAtlasSource_r2aq1")
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_or4aa"]
-radius = 25.0
-height = 100.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hv5pu"]
-radius = 25.0
-height = 100.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_roo42"]
-atlas = ExtResource("1_ypi2y")
-region = Rect2(0, 160, 48, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0nm5"]
-size = Vector2(46, 95)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v0fi"]
-size = Vector2(100, 250)
-
-[sub_resource type="BoxMesh" id="BoxMesh_g6830"]
-size = Vector3(100, 250, 1)
+[ext_resource type="PackedScene" uid="uid://dowdhoswxgpmq" path="res://Tests/area_zones.tscn" id="5_bku12"]
 
 [node name="Test" type="Node"]
 
@@ -65,125 +13,27 @@ size = Vector3(100, 250, 1)
 [node name="TileMapLayer" type="TileMapLayer" parent="Node2D"]
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAnABMAAQAHAAcAAAAmABMAAQAHAAcAAAAlABMAAQAHAAcAAAAkABMAAQAHAAcAAAAjABMAAQAHAAcAAAAYABMAAQAHAAcAAAAAABMAAQAHAAcAAAABABMAAQAHAAcAAAACABMAAQAHAAcAAAADABMAAQAHAAcAAAAEABMAAQAHAAcAAAAFABMAAQAHAAcAAAAGABMAAQAHAAcAAAAHABMAAQAHAAcAAAAIABMAAQAHAAcAAAAJABMAAQAHAAcAAAAKABMAAQAHAAcAAAALABMAAQAHAAcAAAAMABMAAQAHAAcAAAANABMAAQAHAAcAAAAOABMAAQAHAAcAAAAPABMAAQAHAAcAAAAQABMAAQAHAAcAAAARABMAAQAHAAcAAAASABMAAQAHAAcAAAATABMAAQAHAAcAAAAUABMAAQAHAAcAAAAVABMAAQAHAAcAAAAWABMAAQAHAAcAAAAXABMAAQAHAAcAAAAZABMAAQAHAAcAAAAaABMAAQAHAAcAAAAbABMAAQAHAAcAAAAcABMAAQAHAAcAAAAdABMAAQAHAAcAAAAeABMAAQAHAAcAAAAiABMAAQAHAAcAAAAhABMAAQAHAAcAAAAgABMAAQAHAAcAAAAfABMAAQAHAAcAAAAAABIAAQAFAAcAAAABABIAAQAGAAcAAAACABIAAQAFAAcAAAADABIAAQAGAAcAAAAEABIAAQAFAAcAAAAFABIAAQAGAAcAAAAGABIAAQAFAAcAAAAHABIAAQAGAAcAAAAIABIAAQAFAAcAAAAJABIAAQAGAAcAAAAKABIAAQAFAAcAAAALABIAAQAGAAcAAAAMABIAAQAFAAcAAAANABIAAQAGAAcAAAAOABIAAQAFAAcAAAAPABIAAQAGAAcAAAAQABIAAQAFAAcAAAARABIAAQAGAAcAAAASABIAAQAFAAcAAAATABIAAQAGAAcAAAAUABIAAQAFAAcAAAAVABIAAQAGAAcAAAAWABIAAQAFAAcAAAAXABIAAQAGAAcAAAAYABIAAQAFAAcAAAAZABIAAQAGAAcAAAAaABIAAQAFAAcAAAAbABIAAQAGAAcAAAAcABIAAQAFAAcAAAAdABIAAQAGAAcAAAAeABIAAQAFAAcAAAAfABIAAQAGAAcAAAAgABIAAQAFAAcAAAAhABIAAQAGAAcAAAAiABIAAQAFAAcAAAAjABIAAQAFAAcAAAAkABIAAQAGAAcAAAAlABIAAQAFAAcAAAAmABIAAQAGAAcAAAAnABIAAQAFAAcAAAD//xMAAQAHAAcAAAD+/xMAAQAHAAcAAAD9/xMAAQAHAAcAAAD8/xMAAQAHAAcAAAD7/xMAAQAHAAcAAAD6/xMAAQAHAAcAAAD5/xMAAQAHAAcAAAAoABMAAQAHAAcAAAApABMAAQAHAAcAAAAqABMAAQAHAAcAAAArABMAAQAHAAcAAAAsABMAAQAHAAcAAAAtABMAAQAHAAcAAAAuABMAAQAHAAcAAAA=")
-tile_set = SubResource("TileSet_jp0ik")
+tile_set = ExtResource("1_mokyj")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Node2D"]
+tile_map_data = PackedByteArray("AAAMABMAAgAAAAAABQATABIAAgAAAAAABQAaABMAAgAAAAAABQAjABMAAgAAAAAABQAAABMAAgAAAAAABQAbABMAAgAAAAAAAwAtABMAAgAAAAAAAwD8/xMAAgAAAAAAAwD//xMAAgAAAAAABAAKABMAAgAAAAAABAAhABIAAgAAAAAABAAuABUAAgAAAAAABAA=")
+tile_set = ExtResource("1_mokyj")
 
 [node name="Node" type="Node" parent="."]
 
-[node name="Player" type="CharacterBody2D" parent="Node"]
-position = Vector2(789, 524)
-collision_layer = 3
-script = ExtResource("2_cfcjg")
+[node name="Player" parent="Node" instance=ExtResource("2_axjxb")]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Node/Player"]
-mesh = SubResource("CapsuleMesh_or4aa")
+[node name="Scenario" type="Node" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Player"]
-shape = SubResource("CapsuleShape2D_hv5pu")
-
-[node name="Rooms" type="Node" parent="."]
-
-[node name="SceneManager" type="Node2D" parent="Rooms"]
+[node name="SceneManager" type="Node2D" parent="Scenario"]
 script = ExtResource("4_cetch")
 
-[node name="Door" type="Area2D" parent="Rooms"]
-position = Vector2(178, 558)
-collision_mask = 2
-script = ExtResource("1_rqawn")
-room = "res://Tests/village.tscn"
-door_data = {
-"description": "tesst",
-"name": "test"
-}
+[node name="Door" parent="Scenario" instance=ExtResource("4_5si3w")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Rooms/Door"]
-texture = SubResource("AtlasTexture_roo42")
+[node name="AreaZones" parent="Scenario" instance=ExtResource("5_bku12")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Door"]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_p0nm5")
-
-[node name="Control" type="Control" parent="Rooms/Door"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -22.0
-offset_top = -100.0
-offset_right = 18.0
-offset_bottom = -60.0
-
-[node name="Label" type="Label" parent="Rooms/Door/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="AreaZones" type="Area2D" parent="Rooms"]
-position = Vector2(57, 481)
-collision_mask = 2
-script = ExtResource("5_g4gcs")
-next_scene = ExtResource("6_t1qbb")
-exit_direction = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/AreaZones"]
-shape = SubResource("RectangleShape2D_3v0fi")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Rooms/AreaZones"]
-modulate = Color(0.264943, 0.547901, 0.703651, 1)
-mesh = SubResource("BoxMesh_g6830")
-
-[node name="Control" type="Control" parent="Rooms/AreaZones"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -32.0
-offset_top = -174.0
-offset_right = 8.0
-offset_bottom = -134.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Rooms/AreaZones/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="area_name" type="Label" parent="Rooms/AreaZones/Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="destination_name" type="Label" parent="Rooms/AreaZones/Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="AreaZones2" type="Area2D" parent="Rooms"]
-position = Vector2(1225, 477)
-collision_mask = 2
-script = ExtResource("5_g4gcs")
-next_scene = ExtResource("6_t1qbb")
+[node name="AreaZones2" parent="Scenario" instance=ExtResource("5_bku12")]
+position = Vector2(1226, 482)
 exit_direction = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/AreaZones2"]
-shape = SubResource("RectangleShape2D_3v0fi")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Rooms/AreaZones2"]
-modulate = Color(0.264943, 0.547901, 0.703651, 1)
-mesh = SubResource("BoxMesh_g6830")
-
-[node name="Control" type="Control" parent="Rooms/AreaZones2"]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -32.0
-offset_top = -174.0
-offset_right = 8.0
-offset_bottom = -134.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Rooms/AreaZones2/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="area_name" type="Label" parent="Rooms/AreaZones2/Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="destination_name" type="Label" parent="Rooms/AreaZones2/Control/VBoxContainer"]
-layout_mode = 2
-
-[connection signal="body_entered" from="Rooms/Door" to="Rooms/Door" method="_on_body_entered"]
-[connection signal="body_exited" from="Rooms/Door" to="Rooms/Door" method="_on_body_exited"]
-[connection signal="body_entered" from="Rooms/AreaZones" to="Rooms/AreaZones" method="_on_body_entered"]
-[connection signal="body_exited" from="Rooms/AreaZones" to="Rooms/AreaZones" method="_on_body_exited"]
-[connection signal="body_entered" from="Rooms/AreaZones2" to="Rooms/AreaZones2" method="_on_body_entered"]
-[connection signal="body_exited" from="Rooms/AreaZones2" to="Rooms/AreaZones2" method="_on_body_exited"]
+[node name="Rooms" type="Node2D" parent="."]

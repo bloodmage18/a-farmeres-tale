@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cybgf5nbic4qk"]
+
+[ext_resource type="Texture2D" uid="uid://cau2gt5jdcnle" path="res://Assets/resident_flat.png" id="1_xk53x"]
+
+[node name="Grandmas_flat" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-110, -278)
+texture = ExtResource("1_xk53x")

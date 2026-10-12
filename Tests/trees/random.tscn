@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cm812mme21mmj"]
+
+[ext_resource type="Texture2D" uid="uid://vk2y1mw1dpvy" path="res://Assets/randtrees-Sheet-Sheet.png" id="1_tjowf"]
+
+[node name="random" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(451, -290)
+texture = ExtResource("1_tjowf")

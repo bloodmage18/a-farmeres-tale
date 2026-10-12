@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl2q7q6sfph4p"]
+
+[ext_resource type="Texture2D" uid="uid://bveracsn4py3n" path="res://Assets/npc_house.png" id="1_o23ff"]
+
+[node name="NPChouse" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-2, -68)
+texture = ExtResource("1_o23ff")
+offset = Vector2(202.905, -206.63)

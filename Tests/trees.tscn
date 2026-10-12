@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ics45nu70hbo"]
+
+[ext_resource type="PackedScene" uid="uid://dbbbio81wndbl" path="res://Tests/trees/chief_tree.tscn" id="1_rnhqx"]
+[ext_resource type="PackedScene" uid="uid://cm812mme21mmj" path="res://Tests/trees/random.tscn" id="2_g6ivp"]
+[ext_resource type="PackedScene" uid="uid://c6dc2fln4vvvb" path="res://Tests/trees/dead.tscn" id="3_0g6cp"]
+
+[node name="trees" type="Node2D"]
+
+[node name="chief_tree" parent="." instance=ExtResource("1_rnhqx")]
+
+[node name="random" parent="." instance=ExtResource("2_g6ivp")]
+
+[node name="dead" parent="." instance=ExtResource("3_0g6cp")]

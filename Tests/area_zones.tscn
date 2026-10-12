@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://dowdhoswxgpmq"]
+
+[ext_resource type="Script" path="res://Tests/area_zones.gd" id="1_t6t4l"]
+[ext_resource type="PackedScene" uid="uid://dcd5icwuowpvj" path="res://Tests/village.tscn" id="2_seccm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v0fi"]
+size = Vector2(100, 250)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g6830"]
+size = Vector3(100, 250, 1)
+
+[node name="AreaZones" type="Area2D" groups=["area_zone"]]
+position = Vector2(57, 481)
+collision_mask = 2
+script = ExtResource("1_t6t4l")
+next_scene = ExtResource("2_seccm")
+exit_direction = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3v0fi")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.264943, 0.547901, 0.703651, 1)
+mesh = SubResource("BoxMesh_g6830")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -32.0
+offset_top = -174.0
+offset_right = 8.0
+offset_bottom = -134.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="area_name" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="destination_name" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

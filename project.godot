@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 window/size/viewport_width=1280
 window/size/viewport_height=640
 
+[global_group]
+
+area_zone="this is used to transition from one area to another"
+door="room doors"
+
 [input]
 
 left={
